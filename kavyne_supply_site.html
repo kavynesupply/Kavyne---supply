@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KAVYNE SUPPLY — Shop</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f7f7f7;color:#111}
+header{background:#0b0b0b;color:white;padding:18px 6%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:5}
+.logo{font-size:22px;font-weight:900;letter-spacing:2px}.cart{background:white;color:#111;border:0;border-radius:22px;padding:10px 15px;font-weight:700}
+.hero{padding:70px 6%;background:#111;color:white}.hero h1{font-size:48px;margin:0 0 12px}.hero p{font-size:18px;color:#ccc;max-width:550px}.btn{display:inline-block;margin-top:18px;padding:13px 20px;border-radius:28px;background:white;color:#111;text-decoration:none;font-weight:800}
+section{padding:42px 6%}.title{display:flex;justify-content:space-between;align-items:center}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:white;border-radius:18px;overflow:hidden;box-shadow:0 3px 15px #00000010}.photo{height:230px;background:#e9e9e9;display:flex;align-items:center;justify-content:center;color:#777}.info{padding:16px}.price{font-weight:900;font-size:19px}.buy{width:100%;border:0;background:#111;color:white;padding:12px;border-radius:10px;margin-top:12px;font-weight:700}
+.note{background:#eee;border-radius:16px;padding:22px}.contact{background:#111;color:white}.contact a{color:white}
+footer{padding:25px 6%;text-align:center;background:#050505;color:#aaa;font-size:13px}
+@media(max-width:600px){.hero h1{font-size:38px}}
+</style>
+</head>
+<body>
+<header><div class="logo">KAVYNE SUPPLY</div><button class="cart" onclick="showCart()">🛒 Panier <span id="count">0</span></button></header>
+
+<div class="hero">
+<h1>TON STYLE.<br>TA SUPPLY.</h1>
+<p>Mode, sneakers et accessoires sélectionnés sur commande. Livraison au Sénégal.</p>
+<a class="btn" href="#shop">Voir la collection</a>
+</div>
+
+<section id="shop">
+<div class="title"><h2>Nos articles</h2><span>Précommande</span></div>
+<div class="grid">
+<div class="card"><div class="photo">PHOTO ARTICLE</div><div class="info"><h3>Chanel Runner</h3><div class="price">60 000 FCFA</div><button class="buy" onclick="add('Chanel Runner',60000)">Ajouter</button></div></div>
+<div class="card"><div class="photo">PHOTO ARTICLE</div><div class="info"><h3>Prada Cup</h3><div class="price">60 000 FCFA</div><button class="buy" onclick="add('Prada Cup',60000)">Ajouter</button></div></div>
+<div class="card"><div class="photo">PHOTO ARTICLE</div><div class="info"><h3>Balenciaga Track</h3><div class="price">70 000 FCFA</div><button class="buy" onclick="add('Balenciaga Track',70000)">Ajouter</button></div></div>
+<div class="card"><div class="photo">PHOTO ARTICLE</div><div class="info"><h3>T-shirt premium</h3><div class="price">12 000 FCFA</div><button class="buy" onclick="add('T-shirt premium',12000)">Ajouter</button></div></div>
+<div class="card"><div class="photo">PHOTO ARTICLE</div><div class="info"><h3>Short premium</h3><div class="price">12 000 FCFA</div><button class="buy" onclick="add('Short premium',12000)">Ajouter</button></div></div>
+<div class="card"><div class="photo">PHOTO ARTICLE</div><div class="info"><h3>Casquette</h3><div class="price">7 000 FCFA</div><button class="buy" onclick="add('Casquette',7000)">Ajouter</button></div></div>
+</div>
+</section>
+
+<section><div class="note"><h2>📦 Comment ça marche ?</h2><p>1. Choisis ton article.</p><p>2. Envoie ta commande sur WhatsApp.</p><p>3. Verse 50% pour bloquer la commande.</p><p>4. Réception à Dakar sous environ 14–15 jours selon l'article.</p><p>5. Les 50% restants sont réglés à la livraison.</p></div></section>
+
+<section class="contact"><h2>Commander</h2><p>Pour commander ou demander une autre taille/couleur :</p><a class="btn" href="https://wa.me/221785918778">WhatsApp KAVYNE SUPPLY</a></section>
+<footer>© 2026 KAVYNE SUPPLY — Tous droits réservés.</footer>
+
+<script>
+let cart=[];
+function add(name,price){cart.push({name,price});document.getElementById('count').textContent=cart.length;alert(name+" ajouté au panier.");}
+function showCart(){
+ if(!cart.length){alert("Ton panier est vide.");return}
+ let total=cart.reduce((s,x)=>s+x.price,0);
+ let text="KAVYNE SUPPLY — Ma commande%0A%0A"+cart.map(x=>"• "+x.name+" — "+x.price.toLocaleString()+" FCFA").join("%0A")+"%0A%0ATotal : "+total.toLocaleString()+" FCFA";
+ window.open("https://wa.me/221785918778?text="+text,"_blank");
+}
+</script>
+</body>
+</html>
